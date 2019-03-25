@@ -18,7 +18,7 @@ import okhttp3.*
 //import io.stacrypt.stadroid.application
 
 
-const val STEMERALD_V2_API_URL = "http://stemerald.stacrypt.io/apiv2/"
+var STEMERALD_V2_API_URL = "http://stemerald.stacrypt.io/apiv2/"
 
 
 @Suppress("DeferredIsResult")
