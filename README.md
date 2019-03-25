@@ -1,7 +1,6 @@
 # stacrypt-klient
 
-[![Release](https://jitpack.io/v/stacrypt/stacrypt-klient.svg)]
-(https://jitpack.io/#User/Repo)
+[![Release](https://jitpack.io/v/stacrypt/stacrypt-klient.svg)](https://jitpack.io/#stacrypt/stacrypt-klient)
 
 Stacrypt Web API Client for Java, Kotlin and Android
 
