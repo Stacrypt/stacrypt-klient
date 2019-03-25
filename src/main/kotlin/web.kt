@@ -86,6 +86,31 @@ interface StemeraldV2ApiClient {
         @Query("lastId") lastId: Int = 0
     ): Deferred<ArrayList<Deal>>
 
+    /**
+     * Orders
+     */
+    @HTTP(method = "CREATE", path = "orders", hasBody = true)
+    fun putMarketOrder(
+        @Header("Authorization") jwtToken: String = sessionManager.jwtToken ?: "",
+        @Field("marketName") marketName: String,
+        @Field("amount") amount: Int,
+        @Field("side") side: String,
+        @Field("type") type: String = "market"
+    ): Deferred<DepositInfo>
+
+    @HTTP(method = "CREATE", path = "orders", hasBody = true)
+    fun putLimitOrder(
+        @Header("Authorization") jwtToken: String = sessionManager.jwtToken ?: "",
+        @Field("marketName") marketName: String,
+        @Field("amount") amount: Int,
+        @Field("price") price: Int,
+        @Field("side") side: String,
+        @Field("type") type: String = "limit"
+    ): Deferred<DepositInfo>
+
+    /**
+     * Wallet
+     */
     @HTTP(method = "PEEK", path = "markets/{market}/mydeals", hasBody = true)
     fun mine(
         @Header("Authorization") jwtToken: String = sessionManager.jwtToken ?: "",
