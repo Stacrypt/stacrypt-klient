@@ -93,7 +93,7 @@ interface StemeraldV2ApiClient {
     fun putMarketOrder(
         @Header("Authorization") jwtToken: String = sessionManager.jwtToken ?: "",
         @Field("marketName") marketName: String,
-        @Field("amount") amount: Int,
+        @Field("amount") amount: String,
         @Field("side") side: String,
         @Field("type") type: String = "market"
     ): Deferred<DepositInfo>
@@ -102,8 +102,8 @@ interface StemeraldV2ApiClient {
     fun putLimitOrder(
         @Header("Authorization") jwtToken: String = sessionManager.jwtToken ?: "",
         @Field("marketName") marketName: String,
-        @Field("amount") amount: Int,
-        @Field("price") price: Int,
+        @Field("amount") amount: String,
+        @Field("price") price: String,
         @Field("side") side: String,
         @Field("type") type: String = "limit"
     ): Deferred<DepositInfo>

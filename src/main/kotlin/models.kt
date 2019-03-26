@@ -21,27 +21,27 @@ data class Market(
 )
 
 data class MarketStatus(
-    val openStatus: Long,
-    val highStatus: Long,
-    val lowStatus: Long,
-    val closeStatus: Long,
-    val lastStatus: Long,
-    val dealStatus: Long,
-    val volumeStatus: Long,
-    val periodStatus: Long
+    val openStatus: String,
+    val highStatus: String,
+    val lowStatus: String,
+    val closeStatus: String,
+    val lastStatus: String,
+    val dealStatus: String,
+    val volumeStatus: String,
+    val periodStatus: String
 )
 
 data class MarketSummary(
-    val open24: Long,
-    val last24: Long,
-    val high24: Long,
-    val low24: Long,
-    val deal24: Long,
-    val volume24: Long
+    val open24: String,
+    val last24: String,
+    val high24: String,
+    val low24: String,
+    val deal24: String,
+    val volume24: String
 )
 
 data class MarketLast(
-    val price: Double
+    val price: String
 )
 
 //@Entity
@@ -55,21 +55,22 @@ data class Currency(
     var name: String,
     /*@PrimaryKey */var symbol: String,
     var type: String, // fiat / cryptocurrency
-    var divideByTen: Int,
+    val normalizationScale: Int,
+    val smallestUnitScale: Int,
 
     /**
      * Just for crypto:
      */
-    var depositMin: Long?,
-    var depositMax: Long?,
-    var withdrawMin: Long?,
-    var withdrawMax: Long?,
-    var depositMaxCommission: Long?,
-    var withdrawMaxCommission: Long?,
-    var depositStaticCommission: Long?,
-    var withdrawStaticCommission: Long?,
-    var depositPermilleCommission: Long?,
-    var withdrawPermilleCommission: Long?,
+    var depositMin: String?,
+    var depositMax: String?,
+    var withdrawMin: String?,
+    var withdrawMax: String?,
+    var depositMaxCommission: String?,
+    var withdrawMaxCommission: String?,
+    var depositStaticCommission: String?,
+    var withdrawStaticCommission: String?,
+    var depositCommissionRate: String?,
+    var withdrawCommissionRate: String?,
     var walletId: String?
 
 )
@@ -77,12 +78,12 @@ data class Currency(
 data class Kline(
     var market: String,
     var time: Long,
-    var o: Double,
-    var h: Double,
-    var l: Double,
-    var c: Double,
-    var volume: Double,
-    var amount: Double
+    var o: String,
+    var h: String,
+    var l: String,
+    var c: String,
+    var volume: String,
+    var amount: String
 )
 
 data class Book(
@@ -96,7 +97,7 @@ data class Book(
 data class Deal(
     var market: String,
     var id: Int,
-    var time: Long,
+    var time: Date,
     var type: String,
     var amount: String,
     var price: String
@@ -106,7 +107,7 @@ data class Mine(
     var id: Int,
     var market: String,
     var user: String,
-    var time: Long,
+    var time: Date,
     var side: String,
     var role: String,
     var amount: String,
@@ -119,8 +120,8 @@ data class Mine(
 //@Entity
 data class BalanceOverview(
     /*@PrimaryKey */@SerializedName("name") var assetName: String,
-                    var available: Double,
-                    var freeze: Double
+                    var available: String,
+                    var freeze: String
 )
 
 data class BalanceHistory(
@@ -282,16 +283,16 @@ data class BankCard(
 //@Entity
 data class PaymentGateway(
     /*@PrimaryKey */val name: String,
-                    val cashinMin: Long,
-                    val cashoutStaticCommission: Long,
-                    val cashinMax: Long,
-                    val cashoutMax: Long,
-                    val cashinMaxCommission: Long,
-                    val cashinStaticCommission: Long,
-                    val cashinPermilleCommission: Long,
-                    val cashoutMaxCommission: Long,
-                    val cashoutPermilleCommission: Long,
-                    val cashoutMin: Long,
+                    val cashinMin: String,
+                    val cashoutStaticCommission: String,
+                    val cashinMax: String,
+                    val cashoutMax: String,
+                    val cashinMaxCommission: String,
+                    val cashinStaticCommission: String,
+                    val cashinCommissionRate: String,
+                    val cashoutMaxCommission: String,
+                    val cashoutCommissionRate: String,
+                    val cashoutMin: String,
                     val fiatSymbol: String,
     /*@Embedded(prefix = "fiat_") */val fiat: Fiat
 )
@@ -300,7 +301,8 @@ data class Fiat(
     val name: String,
     val type: String,
     val symbol: String,
-    val divideByTen: Int
+    val normalizationScale: Int,
+    val smallestUnitScale: Int
 )
 
 val dateFormatter by lazy { SimpleDateFormat("dd MMM yyyy HH:mm") }
