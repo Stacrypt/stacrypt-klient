@@ -75,6 +75,25 @@ data class Currency(
 
 )
 
+data class Order(
+    val id: Int,
+    val createdAt: Date?,
+    val modifiedAt: Date?,
+    val finishedAt: Date?,
+    val market: String,
+    val user: Int,
+    val type: String,
+    val side: String,
+    val amount: String,
+    val price: String?,
+    val takerFeeRate: String?,
+    val makerFeeRate: String?,
+    val source: String?,
+    val filledMoney: String?,
+    val filledStock: String?,
+    val filledFee: String?
+)
+
 data class Kline(
     var market: String,
     var time: Long,

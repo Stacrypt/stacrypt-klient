@@ -97,7 +97,7 @@ interface StemeraldV2ApiClient {
         @Field("amount") amount: String,
         @Field("side") side: String,
         @Field("type") type: String = "market"
-    ): Deferred<DepositInfo>
+    ): Deferred<Order>
 
     @FormUrlEncoded
     @HTTP(method = "CREATE", path = "orders", hasBody = true)
@@ -108,7 +108,7 @@ interface StemeraldV2ApiClient {
         @Field("price") price: String,
         @Field("side") side: String,
         @Field("type") type: String = "limit"
-    ): Deferred<DepositInfo>
+    ): Deferred<Order>
 
     /**
      * Wallet
