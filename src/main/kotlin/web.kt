@@ -89,6 +89,15 @@ interface StemeraldV2ApiClient {
     /**
      * Orders
      */
+    @HTTP(method = "GET", path = "orders", hasBody = false)
+    fun getOrers(
+        @Header("Authorization") jwtToken: String = sessionManager.jwtToken ?: "",
+        @Query("marketName") marketName: String,
+        @Query("status") status: String,
+        @Query("offset") offset: Int,
+        @Query("limit") type: Int
+    ): Deferred<Order>
+
     @FormUrlEncoded
     @HTTP(method = "CREATE", path = "orders", hasBody = true)
     fun putMarketOrder(
