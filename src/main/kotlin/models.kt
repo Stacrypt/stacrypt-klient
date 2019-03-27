@@ -2,8 +2,10 @@ package io.stacrypt.stadroid.data
 
 //import androidx.room.*
 import com.google.gson.annotations.SerializedName
+import java.math.BigDecimal
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 //@Entity
 data class Market(
@@ -111,6 +113,16 @@ data class Book(
     var side: String,
     var price: String,
     var amount: String
+)
+
+data class Depth(
+    var asks: ArrayList<DepthRecord>,
+    var bids: ArrayList<DepthRecord>
+)
+
+data class DepthRecord(
+    var price: BigDecimal,
+    var amount: BigDecimal
 )
 
 data class Deal(
