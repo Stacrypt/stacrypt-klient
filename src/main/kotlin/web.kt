@@ -89,6 +89,7 @@ interface StemeraldV2ApiClient {
     /**
      * Orders
      */
+    @FormUrlEncoded
     @HTTP(method = "CREATE", path = "orders", hasBody = true)
     fun putMarketOrder(
         @Header("Authorization") jwtToken: String = sessionManager.jwtToken ?: "",
@@ -98,6 +99,7 @@ interface StemeraldV2ApiClient {
         @Field("type") type: String = "market"
     ): Deferred<DepositInfo>
 
+    @FormUrlEncoded
     @HTTP(method = "CREATE", path = "orders", hasBody = true)
     fun putLimitOrder(
         @Header("Authorization") jwtToken: String = sessionManager.jwtToken ?: "",
