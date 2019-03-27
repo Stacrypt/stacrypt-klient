@@ -96,7 +96,7 @@ interface StemeraldV2ApiClient {
         @Query("status") status: String,
         @Query("offset") offset: Int,
         @Query("limit") limit: Int
-    ): Deferred<Order>
+    ): Deferred<ArrayList<Order>>
 
     @HTTP(method = "GET", path = "orders/{order}", hasBody = true)
     fun cancelOrder(
