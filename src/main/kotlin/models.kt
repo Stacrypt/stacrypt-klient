@@ -73,6 +73,8 @@ data class Currency(
     var withdrawStaticCommission: String?,
     var depositCommissionRate: String?,
     var withdrawCommissionRate: String?,
+    var supportAddressRenewal: Boolean?,
+    var supportNetworkFee: Boolean?,
     var walletId: String?
 
 )

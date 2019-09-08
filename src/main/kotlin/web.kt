@@ -82,7 +82,7 @@ interface StemeraldV2ApiClient {
     @HTTP(method = "DEPTH", path = "markets/{market}", hasBody = true)
     fun depth(
         @Path("market") market: String,
-        @Query("interval") interval: String,
+        @Query("interval") interval: String?,
         @Query("limit") limit: Int
     ): Deferred<Depth>
 
