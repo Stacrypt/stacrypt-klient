@@ -15,7 +15,8 @@ data class Market(
                         var money: String,
                         var feePrec: Int,
                         var minAmount: String,
-                        var moneyPrec: Int
+                        var moneyPrec: Int,
+                        var defaultDepthInterval: String?
 //    @Embedded var status: MarketStatus?,
 //    @Embedded var summary: MarketSummary?,
 //    @Embedded var last: MarketLast?
