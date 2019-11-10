@@ -350,6 +350,9 @@ interface StemeraldV2ApiClient {
         @Path("sessionId") sessionId: String
     ): Deferred<Unit>
 
+    @HTTP(method = "GET", path = "prices", hasBody = false)
+    fun priceList(): Deferred<ArrayList<Price>>
+
 
 }
 

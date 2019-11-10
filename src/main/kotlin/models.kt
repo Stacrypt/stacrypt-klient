@@ -339,5 +339,16 @@ data class Fiat(
     val smallestUnitScale: Int
 )
 
+data class Price(
+    var id: Int,
+    var currencySymbol: String,
+    var currency: Currency?,
+    var criterionCurrencySymbol: String,
+    var criterionCurrency: Currency?,
+    var ticker: BigDecimal,
+    var swing: BigDecimal,
+    var createdAt: Date
+)
+
 val dateFormatter by lazy { SimpleDateFormat("dd MMM yyyy HH:mm") }
 fun Date.format() = dateFormatter.format(this)
