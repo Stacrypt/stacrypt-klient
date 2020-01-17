@@ -376,7 +376,7 @@ val StemeraldOkHttpClient: OkHttpClient by lazy {
                 sessionManager.login(newToken)
             }
 
-            if (response.code() == 401) {
+            if (response.code == 401) {
                 // TODO: Force logout
                 sessionManager.logout()
             }
