@@ -344,7 +344,7 @@ interface StemeraldV2ApiClient {
         @Header("Authorization") jwtToken: String = sessionManager.jwtToken ?: ""
     ): Deferred<List<Session>>
 
-    @HTTP(method = "GET", path = "sessions/{sessionId}", hasBody = true)
+    @HTTP(method = "TERMINATE", path = "sessions/{sessionId}", hasBody = true)
     fun terminateSessions(
         @Header("Authorization") jwtToken: String = sessionManager.jwtToken ?: "",
         @Path("sessionId") sessionId: String
