@@ -60,6 +60,9 @@ data class Currency(
     var type: String, // fiat / cryptocurrency
     val normalizationScale: Int,
     val smallestUnitScale: Int,
+    var swapMin: String?,
+    var swapMax: String?,
+    var swapStep: String?,
 
     /**
      * Just for crypto:
