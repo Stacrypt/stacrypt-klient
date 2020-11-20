@@ -345,9 +345,9 @@ data class Fiat(
 data class Price(
     var id: Int,
     var currencySymbol: String,
-    var currency: Currency?,
+//    var currency: Currency?,
     var criterionCurrencySymbol: String,
-    var criterionCurrency: Currency?,
+//    var criterionCurrency: Currency?,
     var ticker: BigDecimal,
     var swing: BigDecimal,
     var createdAt: Date
