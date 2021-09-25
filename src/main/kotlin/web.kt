@@ -112,6 +112,12 @@ interface StemeraldV2ApiClient {
         @Query("marketName") marketName: String
     ): Deferred<Unit>
 
+    @HTTP(method = "TERMINATE", path = "orders", hasBody = true)
+    fun terminateOrders(
+        @Header("Authorization") jwtToken: String = sessionManager.jwtToken ?: "",
+        @Query("marketName") marketName: String
+    ): Deferred<Unit>
+
     @FormUrlEncoded
     @HTTP(method = "CREATE", path = "orders", hasBody = true)
     fun putMarketOrder(
