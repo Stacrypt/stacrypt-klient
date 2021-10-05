@@ -16,7 +16,11 @@ data class Market(
                         var feePrec: Int,
                         var minAmount: String,
                         var moneyPrec: Int,
-                        var defaultDepthInterval: String?
+                        var defaultDepthInterval: String?,
+                        var priceStep: BigDecimal?,
+                        var amountStep: BigDecimal?,
+                        var quoteMin: BigDecimal?,
+                        var quoteMax: BigDecimal?
 //    @Embedded var status: MarketStatus?,
 //    @Embedded var summary: MarketSummary?,
 //    @Embedded var last: MarketLast?
