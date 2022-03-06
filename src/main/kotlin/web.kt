@@ -1,16 +1,11 @@
 package io.stacrypt.stadroid.data
 
 //import android.util.Base64
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+//import io.fabric.sdk.android.services.settings.IconRequest.build
 import kotlinx.coroutines.Deferred
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 import java.io.File
 import java.util.*
-//import io.fabric.sdk.android.services.settings.IconRequest.build
-import okhttp3.*
 
 //import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 //import com.franmontiel.persistentcookiejar.cache.SetCookieCache
@@ -365,42 +360,7 @@ interface StemeraldV2ApiClient {
 
 //val cookieJar by lazy { PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(application)) }
 
-val StemeraldOkHttpClient: OkHttpClient by lazy {
-    OkHttpClient.Builder()
-//        .cookieJar(cookieJar)
-        .addInterceptor { chain ->
-
-            val newRequest = chain.request()
-                .newBuilder()
-                .addHeader("X-Firebase-Token", sessionManager.fbToken ?: "")
-                .build()
-
-            val response = chain.proceed(newRequest)
-
-            val newToken = response.header("X-New-JWT-Token")
-            if (newToken != null) {
-                sessionManager.login(newToken)
-            }
-
-            if (response.code == 401) {
-                // TODO: Force logout
-                sessionManager.logout()
-            }
-            return@addInterceptor response
-
-        }
-        .addInterceptor(HttpLoggingInterceptor())
-        .build()
-}
-
-
 val StemeraldApiClient: StemeraldV2ApiClient by lazy {
-    Retrofit.Builder()
-        .baseUrl(STEMERALD_V2_API_URL)
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(StemeraldOkHttpClient)
-        .build()
-        .create(StemeraldV2ApiClient::class.java)
+    StemeraldClientFactory.createSessionClient()
 }
 
